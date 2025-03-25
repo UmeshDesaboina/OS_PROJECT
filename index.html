@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Allocation Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .controls input, .controls select, .controls button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+        th {
+            background-color: #1e1e1e;
+        }
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        canvas {
+            max-width: 400px;
+            max-height: 250px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔹 Real-Time Memory Allocation Tracker 🔹</h1>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="🔍 Search Process or PID">
+        <select id="filterDropdown">
+            <option value="all">All</option>
+            <option value="running">Running</option>
+            <option value="deallocated">Deallocated</option>
+        </select>
+        <button onclick="downloadCSV()">📥 Download CSV</button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Process Name</th>
+                    <th>PID</th>
+                    <th>Memory (MB)</th>
+                    <th>Status</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="processTable"></tbody>
+        </table>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="memoryPieChart"></canvas>
+        <canvas id="memoryBarChart"></canvas>
+        <canvas id="memoryLineChart"></canvas>
+    </div>
+
+</body>
+</html>

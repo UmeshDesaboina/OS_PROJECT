@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+canvas {
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
